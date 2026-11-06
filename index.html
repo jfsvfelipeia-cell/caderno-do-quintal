@@ -2,17 +2,19 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Caderno do Quintal</title>
+<title>Caderno do Quintal · Quintal Aroeira</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="robots" content="noindex, nofollow">
+
 <meta name="description" content="Informativo quinzenal da Escola Waldorf Quintal Aroeira.">
 <style>
-@font-face{font-family:"Baar Metanoia";src:url(fontes/BaarMetanoia-Regular.ttf);font-weight:400;font-style:normal}
-@font-face{font-family:"Baar Metanoia";src:url(fontes/BaarMetanoia-Bold.ttf);font-weight:700;font-style:normal}
-@font-face{font-family:"Baar Metanoia";src:url(fontes/BaarMetanoia-Italic.ttf);font-weight:400;font-style:italic}
-@font-face{font-family:"Baar Sophia";src:url(fontes/BaarSophia-Regular.ttf);font-weight:400;font-style:normal}
-@font-face{font-family:"Baar Sophia";src:url(fontes/BaarSophia-Bold.ttf);font-weight:700;font-style:normal}
-@font-face{font-family:"Baar Sophia";src:url(fontes/BaarSophia-Italic.ttf);font-weight:400;font-style:italic}
+@font-face{font-family:"Baar Metanoia";font-display:swap;src:url(fontes/BaarMetanoia-Regular.ttf);font-weight:400;font-style:normal}
+@font-face{font-family:"Baar Metanoia";font-display:swap;src:url(fontes/BaarMetanoia-Bold.ttf);font-weight:700;font-style:normal}
+@font-face{font-family:"Baar Metanoia";font-display:swap;src:url(fontes/BaarMetanoia-Italic.ttf);font-weight:400;font-style:italic}
+@font-face{font-family:"Baar Sophia";font-display:swap;src:url(fontes/BaarSophia-Regular.ttf);font-weight:400;font-style:normal}
+@font-face{font-family:"Baar Sophia";font-display:swap;src:url(fontes/BaarSophia-Bold.ttf);font-weight:700;font-style:normal}
+@font-face{font-family:"Baar Sophia";font-display:swap;src:url(fontes/BaarSophia-Italic.ttf);font-weight:400;font-style:italic}
 @font-face{font-family:"Baar Zeitgeist";src:url(fontes/BaarZeitgeist-Regular.ttf)}
 @font-face{font-family:"Antropos";src:url(fontes/Antropos-Freefont.ttf)}
 
@@ -103,12 +105,12 @@ svg.borda{position:absolute; inset:0; width:380px; height:540px; z-index:-1; poi
 .contra-frase{font-family:var(--f-titulo); font-style:italic; font-size:19px; fill:var(--logo-tinta)}
 .contra-info{font-family:var(--f-texto); font-size:11.5px; fill:var(--tinta-capa)}
 .ep{display:none}
-#livro[data-epoca="primavera"] .ep-primavera,
-#livro[data-epoca="lanterna"] .ep-lanterna,
-#livro[data-epoca="advento"] .ep-advento{display:inline}
-#livro[data-epoca="primavera"]{--feltro:#F6DDD6; --logo-tinta:url(#fio-marrom); --tinta-capa:#482A20; --linha:#482A20}
-#livro[data-epoca="lanterna"]{--feltro:#D9A55A; --logo-tinta:url(#fio-marrom); --tinta-capa:#482A20; --linha:#F7EFE0}
-#livro[data-epoca="advento"]{--feltro:#482A20; --logo-tinta:url(#fio-creme); --tinta-capa:#F7EFE0; --linha:#D9A55A}
+.caderno[data-epoca="primavera"] .ep-primavera,
+.caderno[data-epoca="lanterna"] .ep-lanterna,
+.caderno[data-epoca="advento"] .ep-advento{display:inline}
+.caderno[data-epoca="primavera"]{--feltro:#F6DDD6; --logo-tinta:url(#fio-marrom); --tinta-capa:#482A20; --linha:#482A20}
+.caderno[data-epoca="lanterna"]{--feltro:#D9A55A; --logo-tinta:url(#fio-marrom); --tinta-capa:#482A20; --linha:#F7EFE0}
+.caderno[data-epoca="advento"]{--feltro:#482A20; --logo-tinta:url(#fio-creme); --tinta-capa:#F7EFE0; --linha:#D9A55A}
 .balanca{transform-box:fill-box; transform-origin:50% 90%; animation:balanca 7s ease-in-out infinite}
 .balanca.b2{animation-duration:9s; animation-delay:-3s}
 .balanca.b3{animation-duration:8s; animation-delay:-5s}
@@ -199,8 +201,15 @@ body.modo-pdf #livro-wrap{width:auto}
 body.modo-pdf .pagina{width:148mm; height:210mm; break-after:page; --escala:1.4720}
 body.modo-pdf .pag-esq .folha::after, body.modo-pdf .pag-dir .folha::after{display:none}
 </style>
+<link rel="stylesheet" href="leitor.css">
 </head>
-<body>
+<body data-modo="leitura">
+<a class="pular" href="#pagina-1">Pular para o conteúdo</a>
+<header class="cabecalho">
+<a class="marca-caderno" href="#pagina-0" data-ir="0"><span class="marca-pingo" aria-hidden="true"></span><span><span class="cab-sobre">QUINTAL AROEIRA</span><h1>Caderno do Quintal</h1></span></a>
+<div class="cab-acoes"><div class="modos" aria-label="Modo de leitura"><button type="button" data-modo="livro" aria-pressed="false">Livro</button><button type="button" data-modo="leitura" aria-pressed="true">Leitura</button></div><details class="indice"><summary>Sumário <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5h10M3 8h10M3 11h10"/></svg></summary><nav aria-label="Seções do caderno"><a href="#pagina-1" data-ir="1">Carta de abertura</a><a href="#pagina-3" data-ir="3">A época do ano</a><a href="#pagina-4" data-ir="4">Agenda da quinzena</a><a href="#pagina-5" data-ir="5">Aconteceu no Quintal</a><a href="#pagina-6" data-ir="6">Vida nas turmas</a><a href="#pagina-7" data-ir="7">Recados e lembretes</a><a href="#pagina-8" data-ir="8">Para fazer em casa</a></nav></details></div>
+</header>
+<div class="linha-edicao"><span>Uma publicação para a nossa comunidade</span><span>Nº 1 <i aria-hidden="true"></i> Novembro de 2026 <span class="selo-modelo">Edição modelo</span></span></div>
 
 <!-- definições: logos oficiais (paths intactos do kit) + linhas de bordado + feltro -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -218,16 +227,16 @@ body.modo-pdf .pag-esq .folha::after, body.modo-pdf .pag-dir .folha::after{displ
     </pattern>
     <filter id="bordado" x="-4%" y="-8%" width="108%" height="118%" color-interpolation-filters="sRGB">
       <feTurbulence type="fractalNoise" baseFrequency="1.3" numOctaves="1" seed="7" result="ruido"/>
-      <feDisplacementMap in="SourceGraphic" in2="ruido" scale="1.1" xChannelSelector="R" yChannelSelector="G" result="fiapo"/>
+      <feDisplacementMap in="SourceGraphic" in2="ruido" scale=".35" xChannelSelector="R" yChannelSelector="G" result="fiapo"/>
       <feGaussianBlur in="SourceAlpha" stdDeviation="1" result="alt"/>
-      <feSpecularLighting in="alt" surfaceScale="2" specularConstant=".6" specularExponent="14" lighting-color="#FFFFFF" result="brilho">
+      <feSpecularLighting in="alt" surfaceScale="2" specularConstant=".25" specularExponent="14" lighting-color="#FFFFFF" result="brilho">
         <feDistantLight azimuth="225" elevation="48"/>
       </feSpecularLighting>
       <feComposite in="brilho" in2="fiapo" operator="in" result="brilhoDentro"/>
-      <feComposite in="fiapo" in2="brilhoDentro" operator="arithmetic" k2="1" k3=".35" result="relevo"/>
+      <feComposite in="fiapo" in2="brilhoDentro" operator="arithmetic" k2="1" k3=".15" result="relevo"/>
       <feGaussianBlur in="SourceAlpha" stdDeviation=".9"/>
       <feOffset dx=".5" dy="1" result="desloc"/>
-      <feComponentTransfer in="desloc" result="sombra"><feFuncA type="linear" slope=".35"/></feComponentTransfer>
+      <feComponentTransfer in="desloc" result="sombra"><feFuncA type="linear" slope=".15"/></feComponentTransfer>
       <feMerge><feMergeNode in="sombra"/><feMergeNode in="relevo"/></feMerge>
     </filter>
     <filter id="peca-feltro" x="-12%" y="-12%" width="124%" height="124%" color-interpolation-filters="sRGB">
@@ -248,28 +257,30 @@ body.modo-pdf .pag-esq .folha::after, body.modo-pdf .pag-dir .folha::after{displ
   <div id="livro-wrap">
     <div class="bloco" id="bloco-esq" aria-hidden="true"></div>
     <div class="bloco" id="bloco-dir" aria-hidden="true"></div>
-    <div id="livro" data-epoca="primavera">
+    <div class="caderno" id="livro" data-epoca="primavera">
 
       <!-- ============ CAPA ============ -->
-      <div class="pagina capa feltro" data-density="hard">
+      <div class="pagina capa feltro" data-density="hard" id="pagina-0" data-pagina="0" tabindex="-1">
         <div class="folha">
           <svg class="capa-arte" viewBox="0 0 380 540" role="img" aria-label="Capa do Caderno do Quintal, informativo quinzenal da Escola Waldorf Quintal Aroeira">
             <rect class="pesponto" x="14" y="14" width="352" height="512" rx="7"/>
             <g class="aplique-capa" data-aplique="capa"></g>
             <use href="#logo-completo" x="52" y="150" width="276" height="110" filter="url(#bordado)"/>
-            <text class="capa-nome" x="190" y="318" text-anchor="middle" filter="url(#bordado)">Caderno do Quintal</text>
+            <text class="capa-nome" x="190" y="318" text-anchor="middle">Caderno do Quintal</text>
             <text class="capa-sub" x="190" y="344" text-anchor="middle">INFORMATIVO QUINZENAL</text>
             <g filter="url(#peca-feltro)">
               <rect x="66" y="468" width="248" height="36" rx="3" fill="#F7EFE0"/>
             </g>
             <rect x="71" y="473" width="238" height="26" rx="2" fill="none" stroke="#482A20" stroke-width="1" stroke-dasharray="4 3" opacity=".55"/>
+            <text class="etiqueta-texto" x="190" y="450" text-anchor="middle" style="font-size:10px">Edição modelo</text>
             <text class="etiqueta-texto" x="190" y="491.5" text-anchor="middle">Nº 1 · 2ª quinzena de novembro de 2026</text>
           </svg>
         </div>
       </div>
 
+      <a class="abrir-caderno" href="#pagina-1" data-ir="1">Abrir o caderno <span aria-hidden="true">↓</span></a>
       <!-- ============ 1 · CARTA ============ -->
-      <div class="pagina miolo pag-esq">
+      <div class="pagina miolo pag-esq" id="pagina-1" data-pagina="1" tabindex="-1">
         <div class="folha">
           <p class="sobrelinha surge" style="--i:0">CARTA DE ABERTURA</p>
           <h2 class="titulo surge" style="--i:1">Um caderno para a nossa comunidade</h2>
@@ -286,28 +297,28 @@ body.modo-pdf .pag-esq .folha::after, body.modo-pdf .pag-dir .folha::after{displ
       </div>
 
       <!-- ============ 2 · SUMÁRIO ============ -->
-      <div class="pagina miolo pag-dir">
+      <div class="pagina miolo pag-dir" id="pagina-2" data-pagina="2" tabindex="-1">
         <div class="folha">
           <p class="sobrelinha surge" style="--i:0">NESTA QUINZENA</p>
           <h2 class="titulo surge" style="--i:1">O que vocês vão encontrar</h2>
           <svg class="traco surge" style="--i:1" data-traco="coral" viewBox="0 0 74 10"></svg>
           <ul class="sumario">
-            <li class="surge" style="--i:2"><button class="item-sumario" data-ir="3"><svg class="desenho" width="30" height="30" viewBox="0 0 100 100" data-desenho="sol"></svg><span class="linha-item"><span>A época do ano</span><span class="pontos"></span></span><span class="pag">3</span></button></li>
-            <li class="surge" style="--i:3"><button class="item-sumario" data-ir="4"><svg class="desenho" width="30" height="30" viewBox="0 0 100 100" data-desenho="caderno"></svg><span class="linha-item"><span>Agenda da quinzena</span><span class="pontos"></span></span><span class="pag">4</span></button></li>
-            <li class="surge" style="--i:4"><button class="item-sumario" data-ir="5"><svg class="desenho" width="30" height="30" viewBox="0 0 100 100" data-desenho="flor" data-cor="rose"></svg><span class="linha-item"><span>Aconteceu no Quintal</span><span class="pontos"></span></span><span class="pag">5</span></button></li>
-            <li class="surge" style="--i:5"><button class="item-sumario" data-ir="6"><svg class="desenho" width="30" height="30" viewBox="0 0 100 100" data-desenho="broto"></svg><span class="linha-item"><span>Vida nas turmas</span><span class="pontos"></span></span><span class="pag">6</span></button></li>
-            <li class="surge" style="--i:6"><button class="item-sumario" data-ir="7"><svg class="desenho" width="30" height="30" viewBox="0 0 100 100" data-desenho="envelope"></svg><span class="linha-item"><span>Recados e lembretes</span><span class="pontos"></span></span><span class="pag">7</span></button></li>
-            <li class="surge" style="--i:7"><button class="item-sumario" data-ir="8"><svg class="desenho" width="30" height="30" viewBox="0 0 100 100" data-desenho="giz"></svg><span class="linha-item"><span>Para fazer em casa</span><span class="pontos"></span></span><span class="pag">8</span></button></li>
+            <li class="surge" style="--i:2"><a class="item-sumario" href="#pagina-3" data-ir="3"><svg class="desenho" width="30" height="30" viewBox="0 0 100 100" data-desenho="sol"></svg><span class="linha-item"><span>A época do ano</span><span class="pontos"></span></span><span class="pag">3</span></a></li>
+            <li class="surge" style="--i:3"><a class="item-sumario" href="#pagina-4" data-ir="4"><svg class="desenho" width="30" height="30" viewBox="0 0 100 100" data-desenho="caderno"></svg><span class="linha-item"><span>Agenda da quinzena</span><span class="pontos"></span></span><span class="pag">4</span></a></li>
+            <li class="surge" style="--i:4"><a class="item-sumario" href="#pagina-5" data-ir="5"><svg class="desenho" width="30" height="30" viewBox="0 0 100 100" data-desenho="flor" data-cor="rose"></svg><span class="linha-item"><span>Aconteceu no Quintal</span><span class="pontos"></span></span><span class="pag">5</span></a></li>
+            <li class="surge" style="--i:5"><a class="item-sumario" href="#pagina-6" data-ir="6"><svg class="desenho" width="30" height="30" viewBox="0 0 100 100" data-desenho="broto"></svg><span class="linha-item"><span>Vida nas turmas</span><span class="pontos"></span></span><span class="pag">6</span></a></li>
+            <li class="surge" style="--i:6"><a class="item-sumario" href="#pagina-7" data-ir="7"><svg class="desenho" width="30" height="30" viewBox="0 0 100 100" data-desenho="envelope"></svg><span class="linha-item"><span>Recados e lembretes</span><span class="pontos"></span></span><span class="pag">7</span></a></li>
+            <li class="surge" style="--i:7"><a class="item-sumario" href="#pagina-8" data-ir="8"><svg class="desenho" width="30" height="30" viewBox="0 0 100 100" data-desenho="giz"></svg><span class="linha-item"><span>Para fazer em casa</span><span class="pontos"></span></span><span class="pag">8</span></a></li>
           </ul>
           <div class="caixa-verso moldura surge" style="--i:8" data-moldura="verde" data-fundo="rose">
-            <p>Toque num tema para ir direto à página, ou vire as folhas uma a uma.</p>
+            <p>Uma quinzena de encontros, descobertas e vida em comunidade.</p>
           </div>
           <div class="num"><svg data-desenho="circulo" viewBox="0 0 30 22"></svg>2</div>
         </div>
       </div>
 
       <!-- ============ 3 · ÉPOCA ============ -->
-      <div class="pagina miolo pag-esq">
+      <div class="pagina miolo pag-esq" id="pagina-3" data-pagina="3" tabindex="-1">
         <div class="folha">
           <p class="sobrelinha surge" style="--i:0">A ÉPOCA DO ANO</p>
           <h2 class="titulo surge" style="--i:1">Primavera, tempo de florir</h2>
@@ -325,7 +336,7 @@ body.modo-pdf .pag-esq .folha::after, body.modo-pdf .pag-dir .folha::after{displ
       </div>
 
       <!-- ============ 4 · AGENDA ============ -->
-      <div class="pagina miolo pag-dir">
+      <div class="pagina miolo pag-dir" id="pagina-4" data-pagina="4" tabindex="-1">
         <div class="folha">
           <p class="sobrelinha surge" style="--i:0">AGENDA</p>
           <h2 class="titulo surge" style="--i:1">Próximos dias no Quintal</h2>
@@ -346,7 +357,7 @@ body.modo-pdf .pag-esq .folha::after, body.modo-pdf .pag-dir .folha::after{displ
       </div>
 
       <!-- ============ 5 · ACONTECEU ============ -->
-      <div class="pagina miolo pag-esq">
+      <div class="pagina miolo pag-esq" id="pagina-5" data-pagina="5" tabindex="-1">
         <div class="folha">
           <p class="sobrelinha surge" style="--i:0">ACONTECEU NO QUINTAL</p>
           <h2 class="titulo surge" style="--i:1">Festa da Primavera</h2>
@@ -363,7 +374,7 @@ body.modo-pdf .pag-esq .folha::after, body.modo-pdf .pag-dir .folha::after{displ
       </div>
 
       <!-- ============ 6 · TURMAS ============ -->
-      <div class="pagina miolo pag-dir">
+      <div class="pagina miolo pag-dir" id="pagina-6" data-pagina="6" tabindex="-1">
         <div class="folha">
           <p class="sobrelinha surge" style="--i:0">NAS TURMAS</p>
           <h2 class="titulo surge" style="--i:1">Vida nas turmas</h2>
@@ -382,7 +393,7 @@ body.modo-pdf .pag-esq .folha::after, body.modo-pdf .pag-dir .folha::after{displ
       </div>
 
       <!-- ============ 7 · RECADOS ============ -->
-      <div class="pagina miolo pag-esq">
+      <div class="pagina miolo pag-esq" id="pagina-7" data-pagina="7" tabindex="-1">
         <div class="folha">
           <p class="sobrelinha surge" style="--i:0">RECADOS</p>
           <h2 class="titulo surge" style="--i:1">Recados e lembretes</h2>
@@ -408,7 +419,7 @@ body.modo-pdf .pag-esq .folha::after, body.modo-pdf .pag-dir .folha::after{displ
       </div>
 
       <!-- ============ 8 · PARA FAZER EM CASA ============ -->
-      <div class="pagina miolo pag-dir">
+      <div class="pagina miolo pag-dir" id="pagina-8" data-pagina="8" tabindex="-1">
         <div class="folha">
           <p class="sobrelinha surge" style="--i:0">PARA FAZER EM CASA</p>
           <h2 class="titulo surge" style="--i:1">Frottage de folhas</h2>
@@ -426,13 +437,13 @@ body.modo-pdf .pag-esq .folha::after, body.modo-pdf .pag-dir .folha::after{displ
       </div>
 
       <!-- ============ CONTRACAPA ============ -->
-      <div class="pagina contracapa feltro" data-density="hard">
+      <div class="pagina contracapa feltro" data-density="hard" id="pagina-9" data-pagina="9" tabindex="-1">
         <div class="folha">
           <svg class="capa-arte" viewBox="0 0 380 540" role="img" aria-label="Contracapa com o logo, a frase da marca e os contatos da escola">
             <rect class="pesponto" x="14" y="14" width="352" height="512" rx="7"/>
             <g class="aplique-contra" data-aplique="contra"></g>
             <use href="#logo-empilhado" x="130" y="128" width="120" height="127" filter="url(#bordado)"/>
-            <text class="contra-frase" x="190" y="300" text-anchor="middle" filter="url(#bordado)">A infância tem seu tempo.</text>
+            <text class="contra-frase" x="190" y="300" text-anchor="middle">A infância tem seu tempo.</text>
             <text class="contra-info" x="190" y="404" text-anchor="middle">quintal@quintalaroeira.com.br · @quintalaroeira</text>
             <text class="contra-info" x="190" y="424" text-anchor="middle">Próxima edição: [data]</text>
           </svg>
@@ -447,18 +458,17 @@ body.modo-pdf .pag-esq .folha::after, body.modo-pdf .pag-dir .folha::after{displ
   </div>
 </main>
 
-<nav class="controles" aria-label="Navegação do caderno">
-  <button id="voltar" type="button" aria-label="Página anterior"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2 L4 7 L9 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Voltar</button>
-  <span id="onde" aria-live="polite">Capa</span>
-  <button id="avancar" type="button" aria-label="Próxima página">Avançar<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M5 2 L10 7 L5 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-</nav>
-<div class="aprovacao" role="group" aria-label="Modelo para aprovação: capa por época">
-  <span>Modelo para aprovação · capa por época:</span>
-  <button type="button" data-epoca="primavera" aria-pressed="true">Primavera</button>
-  <button type="button" data-epoca="lanterna" aria-pressed="false">Lanterna</button>
-  <button type="button" data-epoca="advento" aria-pressed="false">Advento</button>
-</div>
-
+<section class="book-stage" aria-label="Livro interativo" hidden inert>
+<div id="book-wrap"><div id="livro-montado" class="caderno"></div></div>
+<nav class="controles" aria-label="Navegação do livro"><button id="voltar" type="button" aria-label="Página anterior"><span aria-hidden="true">‹</span> Voltar</button><span id="onde" aria-live="polite">Capa</span><button id="avancar" type="button" aria-label="Próxima página">Avançar <span aria-hidden="true">›</span></button></nav>
+<p class="convite-livro">Um caderno para folhear com calma.</p>
+</section>
+<footer class="rodape-leitor">
+<div><p class="rodape-frase">A infância tem seu tempo.</p><a href="mailto:quintal@quintalaroeira.com.br">quintal@quintalaroeira.com.br</a><a href="https://www.instagram.com/quintalaroeira/" target="_blank" rel="noopener">@quintalaroeira</a></div>
+<details class="escolha-capa"><summary>Capa desta edição</summary><div class="aprovacao" aria-label="Escolher capa"><button type="button" data-epoca="primavera" aria-pressed="true">Primavera</button><button type="button" data-epoca="lanterna" aria-pressed="false">Lanterna</button><button type="button" data-epoca="advento" aria-pressed="false">Advento</button></div></details>
+<p class="nota-modelo">Edição modelo. Datas, registros das turmas e fotografias serão confirmados pela escola.</p>
+<button class="imprimir" type="button">Guardar em PDF ou imprimir</button>
+</footer>
 <script src="vendor/rough.js?v=2"></script>
 <script src="vendor/page-flip.browser.js?v=2"></script>
 <script>
@@ -598,125 +608,22 @@ body.modo-pdf .pag-esq .folha::after, body.modo-pdf .pag-dir .folha::after{displ
   };
   const TABUA = {primavera: '#E0BFB5', lanterna: '#B98840', advento: '#2C1912'};
   function aplicarEpoca(epoca) {
-    livro.dataset.epoca = epoca;
-    document.getElementById('livro-wrap').style.setProperty('--tabua', TABUA[epoca]);
+    document.querySelectorAll('.caderno').forEach(el => el.dataset.epoca = epoca);
+    document.body.style.setProperty('--tabua', TABUA[epoca]);
     document.querySelectorAll('[data-aplique]').forEach(g => { g.innerHTML = APLIQUES[g.dataset.aplique][epoca]; });
     document.querySelectorAll('.aprovacao button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.epoca === epoca)));
   }
 
-  /* ---------- montagem ---------- */
+  document.addEventListener('caderno:epoca', e => aplicarEpoca(e.detail));
+  /* ---------- montagem progressiva ---------- */
   const epocaInicial = APLIQUES.capa[params.get('epoca')] ? params.get('epoca') : 'primavera';
   aplicarEpoca(epocaInicial);
   await document.fonts.ready;
   desenharTudo();
-  document.querySelectorAll('.marcar').forEach(b => b.addEventListener('click', () => b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true'))));
-
-  if (modoPdf) {
-    document.body.classList.add('modo-pdf');
-    document.querySelectorAll('.pagina').forEach(p => p.classList.add('ativa'));
-    document.body.dataset.pronto = '1';
-    return;
-  }
-
-  const wrap = document.getElementById('livro-wrap');
-  // Livro aberto (duas páginas) só em tela deitada e larga; tela em pé (celular, tablet) mostra uma página grande.
-  function modoDuplo() { return innerWidth >= 700 && innerWidth > innerHeight * 1.05; }
-  function dimensionar() {
-    const W = innerWidth - 32, H = innerHeight - 184;
-    wrap.style.setProperty('--largura', Math.floor(modoDuplo() ? Math.min(W, H * 760 / 540, 1180) : Math.min(W, H * 380 / 540, 640)) + 'px');
-  }
-  dimensionar();
-
-  const reduzir = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const pf = new St.PageFlip(livro, {
-    width: 380, height: 540, size: 'stretch', minWidth: 120, maxWidth: 640, minHeight: 170, maxHeight: 910,
-    startPage: Math.min(Math.max(0, parseInt(params.get('pagina'), 10) || 0), document.querySelectorAll('#livro .pagina').length - 1),
-    showCover: true, usePortrait: true, drawShadow: true, maxShadowOpacity: .45,
-    flippingTime: reduzir ? 300 : 950, mobileScrollSupport: false, clickEventForward: true, showPageCorners: true,
-  });
-  // minWidth passa a servir só para decidir uma ou duas páginas (já na montagem);
-  // o tamanho mínimo que a biblioteca grava no bloco é zerado logo depois.
-  const ajustarOrientacao = () => { pf.getSettings().minWidth = modoDuplo() ? 1 : 100000; livro.style.minWidth = '0px'; };
-  pf.getSettings().minWidth = modoDuplo() ? 1 : 100000;
-  const paginas = [...document.querySelectorAll('#livro .pagina')];
-  pf.loadFromHTML(paginas);
-  ajustarOrientacao();
-  pf.update();
-
-  const total = paginas.length, miolo = total - 2;
-  const onde = document.getElementById('onde'), btVoltar = document.getElementById('voltar'), btAvancar = document.getElementById('avancar');
-  function atualizar() {
-    const b = pf.getBoundsRect();
-    livro.style.setProperty('--escala', (b.pageWidth / 380).toFixed(4));
-    const i = pf.getCurrentPageIndex(), retrato = pf.getOrientation() === 'portrait';
-    let visiveis = [i];
-    if (!retrato && i > 0 && i < total - 1) visiveis = i % 2 ? [i, i + 1] : [i - 1, i];
-    visiveis.forEach(v => paginas[v] && paginas[v].classList.add('ativa'));
-    const [a, z] = visiveis;
-    onde.textContent = a === 0 ? 'Capa' : a === total - 1 ? 'Contracapa' : z && z < total - 1 ? `Páginas ${a} e ${z}` : `Página ${a} de ${miolo}`;
-    wrap.dataset.fechado = retrato ? '' : a === 0 ? 'capa' : a === total - 1 ? 'contracapa' : '';
-    btVoltar.disabled = i === 0;
-    btAvancar.disabled = visiveis.includes(total - 1);
-    empilhar(i, retrato);
-  }
-
-  // Espessura do livro: atrás de cada página visível, as folhas que ainda estão daquele lado
-  // aparecem como bordas de papel em degrau, e por baixo a tábua da capa com a sombra na mesa.
-  const blocoEsq = document.getElementById('bloco-esq'), blocoDir = document.getElementById('bloco-dir');
-  const MAX_FOLHAS = Math.ceil((total - 1) / 2) + 1;
-  function bordas(lado, n, k) {
-    const camadas = [];
-    for (let j = 1; j <= MAX_FOLHAS; j++) { const d = Math.min(j, n) * k; camadas.push(`${(lado * d).toFixed(1)}px ${d.toFixed(1)}px 0 ${j % 2 ? '#F1E9DB' : '#D6C9B4'}`); }
-    const t = (n + 2) * k;
-    camadas.push(`${(lado * t).toFixed(1)}px ${t.toFixed(1)}px 0 var(--tabua)`);
-    camadas.push(`${(lado * t).toFixed(1)}px ${(t + 9 * k).toFixed(1)}px ${(22 * k).toFixed(1)}px rgba(0,0,0,.38)`);
-    return camadas.join(',');
-  }
-  function empilhar(i, retrato) {
-    const b = pf.getBoundsRect(), bloco = livro.querySelector('.stf__block');
-    if (!bloco) return;
-    const w = wrap.getBoundingClientRect(), r = bloco.getBoundingClientRect();
-    const x0 = r.left - w.left + b.left, y0 = r.top - w.top + b.top, pw = b.pageWidth, k = Math.max(1.2, pw / 380 * 1.9);
-    const pos = (el, x) => Object.assign(el.style, {left: x + 'px', top: y0 + 'px', width: pw + 'px', height: b.height + 'px'});
-    const ultima = total - 1;
-    let nEsq = 0, nDir = 0, xEsq = x0, xDir = x0 + pw; // no retrato a página única ocupa a vaga da direita
-    if (retrato) nDir = i === ultima ? 0 : Math.ceil((ultima - i) / 2) + 1;
-    else if (i === 0) nDir = MAX_FOLHAS;
-    else if (i === ultima) { nEsq = MAX_FOLHAS; xEsq = x0; }
-    else { const e = i % 2 ? i : i - 1; nEsq = (e + 1) / 2; nDir = (ultima - e) / 2; }
-    pos(blocoEsq, xEsq); pos(blocoDir, xDir);
-    blocoEsq.classList.toggle('ver', nEsq > 0); blocoDir.classList.toggle('ver', nDir > 0);
-    if (nEsq) blocoEsq.style.boxShadow = bordas(-1, nEsq, k);
-    if (nDir) blocoDir.style.boxShadow = bordas(1, nDir, k);
-  }
-  window.caderno = pf; // acesso para testes no console
-  pf.on('init', atualizar);
-  pf.on('flip', () => { atualizar(); esconderDica(); });
-  pf.on('changeOrientation', () => requestAnimationFrame(atualizar));
-  // Ao começar a virar (arraste ou botão), as páginas vizinhas já recebem o conteúdo:
-  // o texto vai surgindo enquanto a folha cai, em vez de chegar em branco.
-  pf.on('changeState', e => {
-    if (e.data === 'user_fold' || e.data === 'flipping') {
-      const i = pf.getCurrentPageIndex();
-      for (let v = Math.max(0, i - 2); v <= Math.min(total - 1, i + 3); v++) paginas[v].classList.add('ativa');
-      esconderDica();
-    }
-  });
-  addEventListener('resize', () => { dimensionar(); ajustarOrientacao(); requestAnimationFrame(() => { pf.update(); atualizar(); }); });
-  atualizar();
-
-  btVoltar.addEventListener('click', () => pf.flipPrev());
-  btAvancar.addEventListener('click', () => pf.flipNext());
-  addEventListener('keydown', e => { if (e.key === 'ArrowRight') pf.flipNext(); if (e.key === 'ArrowLeft') pf.flipPrev(); });
-  document.querySelectorAll('[data-ir]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); pf.flip(Number(b.dataset.ir)); }));
-  document.querySelectorAll('.aprovacao button').forEach(b => b.addEventListener('click', () => aplicarEpoca(b.dataset.epoca)));
-
-  const dica = document.getElementById('dica');
-  if (matchMedia('(pointer: coarse)').matches) document.getElementById('dica-texto').textContent = 'Arraste a folha para o lado';
-  let dicaTimer = setTimeout(() => dica.classList.add('mostrar'), 1400);
-  function esconderDica() { clearTimeout(dicaTimer); dica.classList.remove('mostrar'); }
+  document.querySelectorAll('svg.desenho,svg.traco,.num svg').forEach(el => el.setAttribute('aria-hidden','true'));
   document.body.dataset.pronto = '1';
 })();
 </script>
+<script src="leitor.js"></script>
 </body>
 </html>
