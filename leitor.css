@@ -92,3 +92,37 @@ body[data-modo=leitura] .caixa-verso{background:rgba(247,239,224,.62)}
 /* Print keeps the grain already present in the real watercolor JPEGs, avoiding
    a separate 300ppi procedural-noise raster for every inside page. */
 @media print{body[data-modo] .miolo .folha{background-image:none!important}}
+
+/* Book is the initial presentation on every screen. Scrolling is optional. */
+.gesto-livro{display:flex;align-items:center;justify-content:center;gap:9px;min-height:34px;margin:8px 0 14px;font-size:14px;color:var(--marrom)}
+.gesto-livro[hidden]{display:none}
+.gesto-livro svg{width:60px;height:28px;overflow:visible}
+.gesto-mao{animation:gesto-arrastar 2s ease-in-out infinite}
+@keyframes gesto-arrastar{0%,12%{transform:translateX(10px);opacity:.4}25%{opacity:1}75%{transform:translateX(-18px);opacity:1}100%{transform:translateX(-18px);opacity:.2}}
+#livro-montado{touch-action:pan-y pinch-zoom;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+#book-wrap[data-retrato=true]{transform:none!important}
+body[data-modo=livro] .book-stage{min-height:0}
+@media(max-width:999px){
+ .cabecalho{display:grid;grid-template-columns:1fr auto;gap:3px 12px;padding:9px 16px}
+ .cab-acoes{display:contents}
+ .marca-caderno{grid-column:1;grid-row:1}
+ .indice{grid-column:2;grid-row:1}
+ .modos{display:flex;grid-column:1/-1;grid-row:2;justify-self:center;margin-top:2px}
+ .modos button{min-height:44px;padding:0 20px}
+ .indice nav{top:calc(100% + 8px);max-height:calc(100dvh - 85px - env(safe-area-inset-bottom,0px))}
+ body[data-modo=livro] .linha-edicao{display:none}
+ body[data-modo=livro] .book-stage{display:flex!important;padding:14px 14px 0;min-height:0}
+ .book-stage .controles{padding:16px 0 0;gap:10px}
+ .controles button{padding:7px 14px}
+ #onde{min-width:105px;font-size:13px}
+ .gesto-livro{margin:5px 0 10px;font-size:13px}
+ body[data-modo=livro] .rodape-leitor{margin-top:24px}
+ body[data-modo=leitura] .pagina{scroll-margin-top:55px}
+}
+@media(max-width:350px){.cabecalho .marca-caderno h1{font-size:18px}.controles button{padding:7px 11px}.book-stage .controles{gap:8px}#onde{min-width:94px}}
+@media(prefers-reduced-motion:reduce){.gesto-mao{animation:none}}
+@media print{.gesto-livro{display:none!important}body[data-modo=livro] .book-stage{display:none!important}}
+
+/* The folding paper may paint past a page edge, but must never expand the
+   viewport into a horizontal scroll area while a touch is held down. */
+@media screen{html{overflow-x:clip}.book-stage{overflow-x:clip}}
