@@ -65,3 +65,30 @@ body[data-modo=leitura] .checklist-nota{font-size:13px!important;line-height:1.5
 
 /* Keep the section menu reachable in short landscape viewports. */
 .indice nav{max-height:calc(100dvh - 120px - env(safe-area-inset-bottom, 0px));overflow-y:auto;overscroll-behavior:contain}
+
+/* Atelier: watercolor paper, fixed wool appliqués and individual thread stitches. */
+.capa-nome{font-family:"Antropos",sans-serif!important;font-size:26px!important;font-weight:400!important;letter-spacing:2.8px}
+.capa-nome-quintal{font-size:32px;letter-spacing:4.3px}
+.capa-sub{font-family:var(--f-texto)!important;font-size:9px!important;letter-spacing:2.5px!important}
+.etiqueta-data{font-family:var(--f-texto)!important;font-size:11px!important;letter-spacing:.3px}
+.balanca{animation:none!important;transform:none!important}
+.feltro .folha{background-image:var(--tex-feltro)!important;background-blend-mode:normal!important}
+.feltro .folha:before{content:"";display:block;position:absolute;inset:0;z-index:3;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 0 .7px rgba(72,42,32,.18),inset -1.7px -2px 2.2px rgba(72,42,32,.2),inset 1px 1px 1px rgba(255,255,255,.55)}
+.capa .folha:after{z-index:2;background:linear-gradient(90deg,rgba(72,42,32,.22),rgba(72,42,32,.1) 4px,rgba(255,255,255,.2) 6px,transparent 11px,rgba(72,42,32,.1) 16px,rgba(255,255,255,.2) 18px,transparent 22px)!important}
+.contracapa .folha:after{z-index:2;background:linear-gradient(270deg,rgba(72,42,32,.19),rgba(72,42,32,.08) 5px,rgba(255,255,255,.18) 7px,transparent 14px,rgba(72,42,32,.1) 17px,transparent 21px)!important}
+body[data-modo=leitura] .capa,body[data-modo=leitura] .contracapa{box-shadow:2px 1px 0 #D5C3AA,3px 2px 0 #F7EFE0,4px 3px 0 #D5C3AA,5px 4px 0 var(--tabua),8px 13px 20px rgba(72,42,32,.16)!important;border-radius:1px 5px 5px 1px!important}
+.miolo .folha{background-image:var(--tex-papel)!important}
+.aquarela{display:block!important;opacity:.92!important;background-size:cover!important;background-repeat:no-repeat;overflow:hidden}
+.aquarela:after{content:"";position:absolute;inset:0;background-image:var(--pigmento);background-size:cover;background-position:50% 50%;mix-blend-mode:multiply;opacity:.44}
+.aquarela[data-variacao="1"]:after{transform:rotate(180deg) scale(1.025);background-position:65% 50%}
+.aquarela[data-variacao="2"]:after{transform:scaleX(-1);background-position:35% 50%}
+.aquarela[data-variacao="3"]:after{transform:scaleY(-1);background-position:50% 65%}
+body[data-modo=leitura] .miolo .folha{background-color:#FFFCF7!important;background-image:var(--tex-papel)!important}
+body[data-modo=leitura] .miolo .aquarela{display:block!important;opacity:.94!important}
+body[data-modo=leitura] .miolo{border-bottom-color:rgba(72,42,32,.12)}
+body[data-modo=leitura] .caixa-verso{background:rgba(247,239,224,.62)}
+@media print{body[data-modo] .miolo .folha{background-image:var(--tex-papel)!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}body[data-modo] .miolo .aquarela{display:block!important;opacity:.94!important}body[data-modo] .feltro .folha:before{display:block!important}}
+.capa text.etiqueta-texto:not(.etiqueta-data){fill:var(--tinta-capa)}
+/* Print keeps the grain already present in the real watercolor JPEGs, avoiding
+   a separate 300ppi procedural-noise raster for every inside page. */
+@media print{body[data-modo] .miolo .folha{background-image:none!important}}
