@@ -201,13 +201,13 @@ body.modo-pdf #livro-wrap{width:auto}
 body.modo-pdf .pagina{width:148mm; height:210mm; break-after:page; --escala:1.4720}
 body.modo-pdf .pag-esq .folha::after, body.modo-pdf .pag-dir .folha::after{display:none}
 </style>
-<link rel="stylesheet" href="leitor.css">
+<link rel="stylesheet" href="leitor.css?v=91a2d01ff965">
 </head>
 <body data-modo="leitura">
 <a class="pular" href="#pagina-1">Pular para o conteúdo</a>
 <header class="cabecalho">
 <a class="marca-caderno" href="#pagina-0" data-ir="0"><span class="marca-pingo" aria-hidden="true"></span><span><span class="cab-sobre">QUINTAL AROEIRA</span><h1>Caderno do Quintal</h1></span></a>
-<div class="cab-acoes"><div class="modos" aria-label="Modo de leitura"><button type="button" data-modo="livro" aria-pressed="false">Livro</button><button type="button" data-modo="leitura" aria-pressed="true">Leitura</button></div><details class="indice"><summary>Sumário <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5h10M3 8h10M3 11h10"/></svg></summary><nav aria-label="Seções do caderno"><a href="#pagina-1" data-ir="1">Carta de abertura</a><a href="#pagina-3" data-ir="3">A época do ano</a><a href="#pagina-4" data-ir="4">Agenda da quinzena</a><a href="#pagina-5" data-ir="5">Aconteceu no Quintal</a><a href="#pagina-6" data-ir="6">Vida nas turmas</a><a href="#pagina-7" data-ir="7">Recados e lembretes</a><a href="#pagina-8" data-ir="8">Para fazer em casa</a></nav></details></div>
+<div class="cab-acoes"><div class="modos" aria-label="Modo de leitura"><button type="button" data-modo="livro" aria-pressed="false">Livro</button><button type="button" data-modo="leitura" aria-pressed="true">Rolagem</button></div><details class="indice"><summary>Sumário <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5h10M3 8h10M3 11h10"/></svg></summary><nav aria-label="Seções do caderno"><a href="#pagina-1" data-ir="1">Carta de abertura</a><a href="#pagina-3" data-ir="3">A época do ano</a><a href="#pagina-4" data-ir="4">Agenda da quinzena</a><a href="#pagina-5" data-ir="5">Aconteceu no Quintal</a><a href="#pagina-6" data-ir="6">Vida nas turmas</a><a href="#pagina-7" data-ir="7">Recados e lembretes</a><a href="#pagina-8" data-ir="8">Para fazer em casa</a></nav></details></div>
 </header>
 <div class="linha-edicao"><span>Uma publicação para a nossa comunidade</span><span>Nº 1 <i aria-hidden="true"></i> Novembro de 2026 <span class="selo-modelo">Edição modelo</span></span></div>
 
@@ -456,7 +456,7 @@ body.modo-pdf .pag-esq .folha::after, body.modo-pdf .pag-dir .folha::after{displ
 <section class="book-stage" aria-label="Livro interativo" hidden inert>
 <div id="book-wrap"><div id="livro-montado" class="caderno"></div></div>
 <nav class="controles" aria-label="Navegação do livro"><button id="voltar" type="button" aria-label="Página anterior"><span aria-hidden="true">‹</span> Voltar</button><span id="onde" aria-live="polite">Capa</span><button id="avancar" type="button" aria-label="Próxima página">Avançar <span aria-hidden="true">›</span></button></nav>
-<p class="convite-livro">Um caderno para folhear com calma.</p>
+<p class="gesto-livro" hidden><svg viewBox="0 0 76 28" aria-hidden="true"><path d="M63 14H13m0 0 6-5m-6 5 6 5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><g class="gesto-mao"><path d="M43 21v-9c0-2 3-2 3 0v-5c0-2 3-2 3 0v7c4-3 8 0 7 3l-2 7H46Z" fill="#F7EFE0" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></g></svg><span>Arraste para virar</span></p>
 </section>
 <footer class="rodape-leitor">
 <div><p class="rodape-frase">A infância tem seu tempo.</p><a href="mailto:quintal@quintalaroeira.com.br">quintal@quintalaroeira.com.br</a><a href="https://www.instagram.com/quintalaroeira/" target="_blank" rel="noopener">@quintalaroeira</a></div>
@@ -638,6 +638,6 @@ body.modo-pdf .pag-esq .folha::after, body.modo-pdf .pag-dir .folha::after{displ
   document.body.dataset.pronto = '1';
 })();
 </script>
-<script src="leitor.js"></script>
+<script src="leitor.js?v=07bd152a8ed6"></script>
 </body>
 </html>
